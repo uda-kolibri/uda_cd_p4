@@ -27,7 +27,8 @@ from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 inst_key = "InstrumentationKey=62f7e8a7-eecc-488c-9969-2a47ac100f04"
 
 # Logging
-
+config_integration.trace_integrations(['logging'])
+config_integration.trace_integrations(['requests'])
 logger = logging.getLogger(__name__)
 handler = AzureLogHandler(connection_string=inst_key)
 logger.addHandler(handler)
@@ -110,12 +111,12 @@ def index():
             r.set(button2,0)
             vote1 = r.get(button1).decode('utf-8')
             properties = {'custom_dimensions': {'Cats Vote': vote1}}
-            logger.info('cat: ', extra=properties)
+            logger.info('cat', extra=properties)
             # TODO: use logger object to log cat vote
 
             vote2 = r.get(button2).decode('utf-8')
             properties = {'custom_dimensions': {'Dogs Vote': vote2}}
-            logger.info('dog: ', extra=properties) 
+            logger.info('dog', extra=properties) 
             # TODO: use logger object to log dog vote
 
             return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
