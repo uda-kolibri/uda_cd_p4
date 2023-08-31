@@ -31,7 +31,7 @@ inst_key = "InstrumentationKey=62f7e8a7-eecc-488c-9969-2a47ac100f04"
 logger = logging.getLogger(__name__)
 handler = AzureLogHandler(connection_string=inst_key)
 logger.addHandler(handler)
-logger.addHandler(AzureEventHandler(connection_string=instrumentation_key))
+logger.addHandler(AzureEventHandler(connection_string=inst_key))
 logger.setLevel(logging.DEBUG)
 
 # Metrics
