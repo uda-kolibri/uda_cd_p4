@@ -37,7 +37,7 @@ logger.setLevel(logging.DEBUG)
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
     enable_standard_metrics=True,
-    connection_string=instrumentation_key)
+    connection_string=inst_key)
 stats_module.stats.view_manager.register_exporter(exporter)
 
 # Tracing
